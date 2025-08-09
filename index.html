@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Portfolio of Shaik Mohammad Khaif — Data Scientist, ML/AI Engineer, Python Developer" />
+  <title>Shaik Mohammad Khaif — Portfolio</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root{
+      --bg:#071018;
+      --card:#0f1720;
+      --muted:#9aa7b2;
+      --accent:#06b6d4;
+      --accent-2:#00d4c4;
+      --glass:rgba(255,255,255,0.03);
+      --radius:14px;
+      --max-w:1200px;
+      --transition:300ms cubic-bezier(.2,.9,.3,1);
+      color-scheme:dark;
+      --accent-gradient: linear-gradient(90deg,var(--accent),var(--accent-2));
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;padding:28px 18px;display:flex;justify-content:center;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:#e6eef3;background:linear-gradient(120deg,#041018 0%, #071018 50%, #05121a 100%);-webkit-font-smoothing:antialiased;scroll-behavior:smooth;
+    }
+
+    .container{width:100%;max-width:var(--max-w)}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .logo{font-weight:800;font-size:18px;letter-spacing:0.6px}
+    nav{display:flex;gap:12px}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:10px;font-weight:600}
+    nav a:hover{color:#001717;background:var(--accent-gradient)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;padding:28px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 40px rgba(2,8,12,0.6);position:relative;overflow:hidden}
+
+    /* animated gradient overlay */
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient( -45deg, rgba(6,182,212,0.06), rgba(0, 212, 196,0.04), rgba(6,182,212,0.06));mix-blend-mode:overlay;pointer-events:none;animation:slowPan 14s linear infinite}
+    @keyframes slowPan{0%{transform:translateX(-10%)}50%{transform:translateX(10%)}100%{transform:translateX(-10%)}}
+
+    .hero-left h1{font-size:clamp(28px,3.4vw,44px);margin:0}
+    .hero-left h2{margin:6px 0;color:var(--accent);font-weight:700}
+    .hero-left p{color:var(--muted);margin-top:12px;max-width:60ch}
+    .cta{margin-top:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent-gradient);border:none;padding:10px 16px;border-radius:10px;color:#031617;font-weight:700;cursor:pointer;transition:transform var(--transition),box-shadow var(--transition)}
+    .btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(2,14,18,0.45)}
+    .btn.ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.04)}
+
+    /* right column - circular profile with animated ring */
+    .hero-right{display:flex;align-items:center;justify-content:center}
+    .profile-wrap{position:relative;width:300px;height:300px}
+    .profile{width:100%;height:100%;border-radius:50%;overflow:hidden;display:block;box-shadow:0 10px 30px rgba(2,8,16,0.6);transform:translateY(0);transition:transform 600ms}
+    .profile img{width:100%;height:100%;object-fit:cover;display:block}
+    .profile-ring{position:absolute;inset:0;border-radius:50%;pointer-events:none;display:flex;align-items:center;justify-content:center}
+    .ring{width:100%;height:100%;border-radius:50%;box-shadow:0 0 60px rgba(6,182,212,0.1) inset;}
+    .ring .pulse{position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(6,182,212,0.12);animation:pulse 2.8s infinite}
+    @keyframes pulse{0%{transform:scale(0.96);opacity:0.6}50%{transform:scale(1.04);opacity:0.2}100%{transform:scale(0.96);opacity:0.6}}
+
+    /* floating icons around profile */
+    .float-icon{position:absolute;color:rgba(255,255,255,0.06);font-size:26px}
+    .fi1{left:-12px;top:24px;animation:floatY 6s ease-in-out infinite}
+    .fi2{right:-10px;top:60px;animation:floatY 5s ease-in-out infinite}
+    .fi3{left:20%;bottom:-8px;animation:floatY 7s ease-in-out infinite}
+    @keyframes floatY{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+
+    /* Sections */
+    section{margin-top:28px}
+    .card{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 24px rgba(2,8,12,0.35)}
+
+    /* Projects */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:12px}
+    .project{position:relative;overflow:hidden;border-radius:12px;transition:transform 350ms,box-shadow 350ms;transform-origin:center center;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
+    .project:hover{transform:translateY(-12px) rotateX(2deg);box-shadow:0 18px 50px rgba(2,8,12,0.6)}
+    .project img{width:100%;height:160px;object-fit:cover}
+    .project-body{padding:12px}
+    .tag{display:inline-block;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.03);margin-right:6px;color:var(--muted);font-size:13px}
+
+    /* timeline */
+    .timeline{position:relative;padding-left:18px;margin-top:10px}
+    .timeline:before{content:'';position:absolute;left:8px;top:0;height:100%;width:3px;background:linear-gradient(180deg,var(--accent),transparent)}
+    .item{position:relative;padding:14px 12px 14px 36px;margin-bottom:12px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.02)}
+    .item:before{content:'';position:absolute;left:-4px;top:22px;width:12px;height:12px;border-radius:50%;background:var(--card);border:2px solid var(--accent)}
+
+    /* Skills (radial) */
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:12px}
+    .skill{display:flex;flex-direction:column;align-items:center;padding:14px;border-radius:12px;background:var(--glass)}
+    .skill svg{transform:rotate(-90deg)}
+    .skill .label{margin-top:8px;color:var(--muted);font-weight:700}
+
+    /* Certifications modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,8,0.6);z-index:1000}
+    .modal.open{display:flex}
+    .modal-content{width:90%;max-width:900px;background:#07151a;padding:18px;border-radius:10px;border:1px solid rgba(255,255,255,0.04)}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:12px}
+    input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+
+    /* Responsive */
+    @media (max-width:980px){.hero{grid-template-columns:1fr;gap:18px}.hero-right{order:-1}.profile-wrap{width:220px;height:220px}.contact-grid{grid-template-columns:1fr}}
+
+    /* reveal */
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity 650ms ease,transform 650ms ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:14px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">Shaik Khaif</div>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#conferences">Conferences</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero reveal" id="home" aria-label="Hero">
+        <div class="hero-left">
+          <h1>Hi, I'm <span style="color:var(--accent)">Shaik Mohammad Khaif</span></h1>
+          <h2 id="role" class="hero-role">Data Scientist • Machine Learning Engineer • <span id="typed">Python Developer</span></h2>
+          <p>I am a B.Tech (ECE) graduate from JNTUACEK. I build data-driven products, train ML models, and write production-ready Python code. I also publish research and enjoy working on computer vision and practical ML systems.</p>
+
+          <div class="cta">
+            <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><i class="fa-solid fa-paper-plane"></i> Hire Me</button>
+            <a class="btn ghost" href="resume.pdf" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
+            <a class="btn ghost" href="#certifications" onclick="openModal()"><i class="fa-solid fa-award"></i> View Certifications</a>
+          </div>
+
+          <div style="margin-top:18px;color:var(--muted)">
+            <span style="display:inline-flex;gap:12px;align-items:center"><i class="fa-brands fa-github" style="color:var(--muted)"></i> <a href="https://github.com/khaif2" target="_blank" style="color:var(--muted);text-decoration:none">github.com/khaif2</a></span>
+            &nbsp;&nbsp;•&nbsp;&nbsp;
+            <span style="display:inline-flex;gap:12px;align-items:center"><i class="fa-brands fa-linkedin" style="color:var(--muted)"></i> <a href="https://www.linkedin.com/in/shaik-khaif/" target="_blank" style="color:var(--muted);text-decoration:none">linkedin.com/in/shaik-khaif</a></span>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="profile-wrap" title="Shaik Mohammad Khaif">
+            <div class="profile" id="profileImg">
+              <img src="profile.jpg" alt="Shaik Khaif" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x600?text=Profile'">
+            </div>
+            <div class="profile-ring">
+              <div class="ring">
+                <div class="pulse"></div>
+              </div>
+            </div>
+
+            <!-- floating icons -->
+            <i class="fa-brands fa-python float-icon fi1" aria-hidden="true"></i>
+            <i class="fa-solid fa-database float-icon fi2" aria-hidden="true"></i>
+            <i class="fa-solid fa-brain float-icon fi3" aria-hidden="true"></i>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="card reveal">
+        <h3>About Me</h3>
+        <p style="color:var(--muted)">I am passionate about applying machine learning and Python engineering to build reliable, explainable systems. I have hands-on experience in ML, computer vision, data pipelines, and published research in aquaponics disease detection.</p>
+
+        <div style="display:flex;gap:18px;margin-top:12px;flex-wrap:wrap">
+          <div style="flex:1;min-width:220px">
+            <h4 style="margin:6px 0">Quick facts</h4>
+            <ul style="color:var(--muted);margin:0;padding-left:20px">
+              <li>B.Tech (ECE) — JNTUACEK (75.85%)</li>
+              <li>Data Science Intern — Echo Brains (May 2025 – Present)</li>
+              <li>Location: Kadapa, Andhra Pradesh, India</li>
+            </ul>
+          </div>
+
+          <div style="flex:1;min-width:220px">
+            <h4 style="margin:6px 0">Top skills</h4>
+            <div class="skills-grid" style="margin-top:8px">
+              <!-- Radial skill item -->
+              <div class="skill" data-percent="92">
+                <svg width="84" height="84" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.06)" stroke-width="12" fill="none"></circle>
+                  <circle class="progress" cx="50" cy="50" r="40" stroke="url(#g1)" stroke-width="12" stroke-linecap="round" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2"></circle>
+                  <defs>
+                    <linearGradient id="g1" x1="0" x2="1">
+                      <stop offset="0%" stop-color="var(--accent)" />
+                      <stop offset="100%" stop-color="var(--accent-2)" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <div class="label">Python — 92%</div>
+              </div>
+
+              <div class="skill" data-percent="86">
+                <svg width="84" height="84" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.06)" stroke-width="12" fill="none"></circle>
+                  <circle class="progress" cx="50" cy="50" r="40" stroke="url(#g2)" stroke-width="12" stroke-linecap="round" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2"></circle>
+                  <defs>
+                    <linearGradient id="g2" x1="0" x2="1"><stop offset="0%" stop-color="#ffd166"/><stop offset="100%" stop-color="#ff6b6b"/></linearGradient>
+                  </defs>
+                </svg>
+                <div class="label">Machine Learning — 86%</div>
+              </div>
+
+              <div class="skill" data-percent="88">
+                <svg width="84" height="84" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.06)" stroke-width="12" fill="none"></circle>
+                  <circle class="progress" cx="50" cy="50" r="40" stroke="url(#g3)" stroke-width="12" stroke-linecap="round" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2"></circle>
+                  <defs>
+                    <linearGradient id="g3" x1="0" x2="1"><stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient>
+                  </defs>
+                </svg>
+                <div class="label">Pandas/NumPy — 88%</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="card reveal">
+        <h3>Projects</h3>
+        <div class="projects-grid">
+
+          <article class="project" data-tilt>
+            <img src="assets/aquaponics.jpg" alt="Smart Aquaponics" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450?text=Aquaponics'">
+            <div class="project-body">
+              <h4>Smart Aquaponics System</h4>
+              <p style="color:var(--muted);margin:6px 0">IoT + CNN-based image classification for fish/plant disease detection. Achieved ~92% accuracy and built real-time monitoring dashboards.</p>
+              <div style="margin-top:8px"><span class="tag">Python</span><span class="tag">CNN</span><span class="tag">Computer Vision</span></div>
+              <div style="margin-top:10px;display:flex;gap:8px">
+                <a class="btn ghost" href="https://github.com/khaif2/AQUAPONICS" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                <a class="btn" href="#" onclick="openInNewTab('https://github.com/khaif2/AQUAPONICS')">View</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project" data-tilt>
+            <img src="assets/ecommerce.jpg" alt="E-Commerce Cart" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450?text=E-Commerce'">
+            <div class="project-body">
+              <h4>E-Commerce Cart System</h4>
+              <p style="color:var(--muted);margin:6px 0">Command-line shopping cart built with core Python data structures and functions; supports product management and billing simulation.</p>
+              <div style="margin-top:8px"><span class="tag">Python</span><span class="tag">DSA</span><span class="tag">CLI</span></div>
+              <div style="margin-top:10px;display:flex;gap:8px">
+                <a class="btn ghost" href="https://github.com/khaif2/E-Commerce-Cart-" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                <a class="btn" href="#" onclick="openInNewTab('https://github.com/khaif2/E-Commerce-Cart-')">View</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project" data-tilt>
+            <img src="assets/placement.jpg" alt="Placement Analysis" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450?text=Placement+Analysis'">
+            <div class="project-body">
+              <h4>Placement Data Analysis</h4>
+              <p style="color:var(--muted);margin:6px 0">Analyzed 200+ student records to uncover placement trends using Pandas and Matplotlib. Visualized placement rates and gender-based outcomes.</p>
+              <div style="margin-top:8px"><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">EDA</span></div>
+              <div style="margin-top:10px;display:flex;gap:8px">
+                <a class="btn ghost" href="https://github.com/khaif2/placement-data-analysis" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                <a class="btn" href="#" onclick="openInNewTab('https://github.com/khaif2/placement-data-analysis')">View</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="card reveal">
+        <h3>Experience</h3>
+        <div class="timeline">
+          <div class="item">
+            <strong>Data Science Intern (Trainee) — Echo Brains</strong>
+            <div style="color:var(--muted);font-size:13px">May 2025 – Present</div>
+            <p style="color:var(--muted);margin-top:8px">Worked on ML model development, preprocessing pipelines, evaluation metrics, and cross-functional automation for real-time insights.</p>
+          </div>
+
+          <div class="item">
+            <strong>Embedded Systems Intern — Slash Mark IT Solutions</strong>
+            <div style="color:var(--muted);font-size:13px">Dec 2024 – Apr 2025</div>
+            <p style="color:var(--muted);margin-top:8px">Sensor integration and Python-based embedded development for real-time applications.</p>
+          </div>
+
+          <div class="item">
+            <strong>Industrial IoT Intern — Cod-Tech IT Solutions</strong>
+            <div style="color:var(--muted);font-size:13px">May 2024 – Jul 2024</div>
+            <p style="color:var(--muted);margin-top:8px">Worked on device connectivity and cloud-based data acquisition pipelines.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education" class="card reveal">
+        <h3>Education</h3>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+          <div style="flex:1;min-width:220px;padding:12px;background:var(--glass);border-radius:10px">
+            <strong>B.Tech — Electronics & Communication Engineering</strong>
+            <div style="color:var(--muted)">JNTUACEK — 2021–2025 (75.85%)</div>
+          </div>
+          <div style="flex:1;min-width:220px;padding:12px;background:var(--glass);border-radius:10px">
+            <strong>Intermediate — PCM</strong>
+            <div style="color:var(--muted)">Narayana Olympiad — 2019–2021 (88.2%)</div>
+          </div>
+          <div style="flex:1;min-width:220px;padding:12px;background:var(--glass);border-radius:10px">
+            <strong>SSC</strong>
+            <div style="color:var(--muted)">Gurukul Vidya Peeth — CGPA 9.8</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="card reveal">
+        <h3>Skills & Tools</h3>
+        <div style="margin-top:12px;display:grid;grid-template-columns:1fr 300px;gap:12px;align-items:start">
+          <div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px">
+              <div class="skill" style="padding:12px;min-height:100px"><i class="fa-brands fa-python fa-2x"></i><div class="label">Python</div></div>
+              <div class="skill" style="padding:12px;min-height:100px"><i class="fa-solid fa-database fa-2x"></i><div class="label">SQL</div></div>
+              <div class="skill" style="padding:12px;min-height:100px"><i class="fa-solid fa-chart-line fa-2x"></i><div class="label">Machine Learning</div></div>
+              <div class="skill" style="padding:12px;min-height:100px"><i class="fa-solid fa-table fa-2x"></i><div class="label">Pandas / NumPy</div></div>
+              <div class="skill" style="padding:12px;min-height:100px"><i class="fa-brands fa-github fa-2x"></i><div class="label">GitHub</div></div>
+              <div class="skill" style="padding:12px;min-height:100px"><i class="fa-solid fa-chart-area fa-2x"></i><div class="label">Data Viz</div></div>
+            </div>
+          </div>
+
+          <div style="background:var(--glass);padding:12px;border-radius:10px">
+            <h4 style="margin:4px 0">Certifications quick links</h4>
+            <ul style="color:var(--muted);margin-top:8px">
+              <li><a href="https://www.linkedin.com/in/shaik-khaif/details/certifications/1748955883189/single-media-viewer/" target="_blank">Python Programming — GeeksforGeeks</a></li>
+              <li><a href="https://www.linkedin.com/in/shaik-khaif/overlay/1748879991919/single-media-viewer/" target="_blank">Introduction to Data Science — Infosys Springboard</a></li>
+              <li><a href="https://www.linkedin.com/in/shaik-khaif/overlay/1753723048478/single-media-viewer/" target="_blank">Prompt Engineering for AI & LLMs — Infosys Springboard</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS & PUBLICATIONS (modal available) -->
+      <section id="certifications" class="card reveal">
+        <h3>Certifications & Publications</h3>
+        <p style="color:var(--muted)">Click the links below to view certificates and the publication PDF.</p>
+        <ul style="color:var(--muted);margin-top:8px">
+          <li><a href="https://www.linkedin.com/in/shaik-khaif/details/certifications/1748955883189/single-media-viewer/" target="_blank">Python Programming — GeeksforGeeks</a></li>
+          <li><a href="https://www.linkedin.com/in/shaik-khaif/overlay/1748879991919/single-media-viewer/" target="_blank">Introduction to Data Science — Infosys Springboard</a></li>
+          <li><a href="https://www.linkedin.com/in/shaik-khaif/overlay/1753723048478/single-media-viewer/" target="_blank">Prompt Engineering for AI & LLMs — Infosys Springboard</a></li>
+        </ul>
+
+        <div style="margin-top:12px">
+          <strong>Publication</strong>
+          <p style="color:var(--muted);margin:6px 0"><a href="https://drive.google.com/file/d/19_tCZab-lO4J_hDK-bX6Z9L0JlLrqgz3/view" target="_blank">"Integrating Deep Learning for Disease Detection in Smart Aquaponics Systems" — ICMASGI 2024 (PDF)</a></p>
+        </div>
+      </section>
+
+      <!-- CONFERENCES -->
+      <section id="conferences" class="card reveal">
+        <h3>International Conferences</h3>
+        <ul style="color:var(--muted);margin-top:8px">
+          <li>ICCSET 2025 – International Conference on Contemporary Issues in Science, Engineering, and Technology</li>
+          <li>SSRD 2024 – Sustainability and Green Innovation</li>
+          <li>ICRIC 2025 – International Conference on Multidisciplinary Approach to Sustainability and Green Innovation</li>
+        </ul>
+      </section>
+
+      <!-- LEADERSHIP -->
+      <section id="leadership" class="card reveal">
+        <h3>Leadership & Volunteering</h3>
+        <ul style="color:var(--muted);margin-top:8px">
+          <li>Student Placement Coordinator (2024–2025) — Coordinated placement drives and resume/interview coaching.</li>
+          <li>President, Cultural Club (2024–2025) — Led college-wide events and promotions.</li>
+          <li>NSS Volunteer & Meri Mitti Mera Desh Campaign Participant — Social and environmental initiatives.</li>
+        </ul>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="card reveal">
+        <h3>Contact</h3>
+        <div class="contact-grid">
+          <div>
+            <form action="mailto:shaikmohammadkhaif292@gmail.com" method="GET" enctype="text/plain">
+              <label>Name</label>
+              <input type="text" name="name" required placeholder="Your name">
+              <label style="margin-top:8px">Email</label>
+              <input type="email" name="email" required placeholder="you@example.com">
+              <label style="margin-top:8px">Message</label>
+              <textarea name="message" rows="6" placeholder="Hi Shaik, I would like to..." required></textarea>
+              <button class="btn" type="submit">Send Message</button>
+            </form>
+
+            <div style="margin-top:12px;color:var(--muted)">
+              <p><strong>Email:</strong> shaikmohammadkhaif292@gmail.com</p>
+              <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/shaik-khaif/" target="_blank">linkedin.com/in/shaik-khaif</a></p>
+              <p><strong>GitHub:</strong> <a href="https://github.com/khaif2" target="_blank">github.com/khaif2</a></p>
+            </div>
+          </div>
+
+          <div>
+            <div style="padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))">
+              <h4>Let's work together</h4>
+              <p style="color:var(--muted)">Available for internships, full-time roles, and freelance Python/Data Science projects. Message me with details and I'll reply as soon as possible.</p>
+
+              <div style="display:flex;gap:8px;margin-top:12px">
+                <a class="btn" href="mailto:shaikmohammadkhaif292@gmail.com"><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;Email</a>
+                <a class="btn ghost" href="https://www.linkedin.com/in/shaik-khaif/" target="_blank"><i class="fa-brands fa-linkedin"></i>&nbsp;&nbsp;LinkedIn</a>
+              </div>
+            </div>
+
+            <div style="margin-top:14px;color:var(--muted)">
+              <strong>Location</strong>
+              <p>Kadapa, Andhra Pradesh, India</p>
+              <strong>Languages</strong>
+              <p>English • Hindi • Telugu</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © 2025 Shaik Mohammad Khaif — All rights reserved. &nbsp; • &nbsp; <a href="https://github.com/khaif2" target="_blank">GitHub</a>
+      </footer>
+    </main>
+
+    <!-- Modal for Certifications (simple list + links) -->
+    <div id="certModal" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3 id="modalTitle" style="margin:0">Certifications</h3>
+          <button style="background:transparent;border:none;color:var(--muted);font-size:18px;cursor:pointer" onclick="closeModal()">✕</button>
+        </div>
+        <div style="margin-top:12px;color:var(--muted)">
+          <ul>
+            <li><a href="https://www.linkedin.com/in/shaik-khaif/details/certifications/1748955883189/single-media-viewer/" target="_blank">Python Programming — GeeksforGeeks</a></li>
+            <li><a href="https://www.linkedin.com/in/shaik-khaif/overlay/1748879991919/single-media-viewer/" target="_blank">Introduction to Data Science — Infosys Springboard</a></li>
+            <li><a href="https://www.linkedin.com/in/shaik-khaif/overlay/1753723048478/single-media-viewer/" target="_blank">Prompt Engineering for AI & LLMs — Infosys Springboard</a></li>
+          </ul>
+          <div style="margin-top:12px"><a class="btn" href="https://drive.google.com/file/d/19_tCZab-lO4J_hDK-bX6Z9L0JlLrqgz3/view" target="_blank">View Publication (PDF)</a></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Typing effect for roles
+    (function(){
+      const roles = ['Data Scientist', 'Machine Learning Engineer', 'Python Developer'];
+      const typed = document.getElementById('typed');
+      let i=0;
+      setInterval(()=>{ typed.textContent = roles[i%roles.length]; i++; }, 2600);
+    })();
+
+    // Reveal elements on scroll
+    const revealItems = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+
+          // Animate radial skills when skills section becomes visible
+          if(entry.target.querySelectorAll && entry.target.id === 'about'){
+            const skills = entry.target.querySelectorAll('.skill');
+            skills.forEach(s=>{
+              const percent = parseInt(s.getAttribute('data-percent')||80,10);
+              const circle = s.querySelector('.progress');
+              if(circle){
+                const circumference = 2*Math.PI*40; // r=40
+                const offset = circumference - (percent/100)*circumference;
+                circle.style.transition = 'stroke-dashoffset 1200ms ease-in-out';
+                requestAnimationFrame(()=>{ circle.style.strokeDashoffset = offset; });
+              }
+            });
+          }
+        }
+      });
+    },{threshold:0.12});
+    revealItems.forEach(i=>revealObserver.observe(i));
+
+    // Project tilt effect
+    const tiltItems = document.querySelectorAll('[data-tilt]');
+    tiltItems.forEach(card=>{
+      card.addEventListener('mousemove',(e)=>{
+        const bounds = card.getBoundingClientRect();
+        const x = (e.clientX - bounds.left) / bounds.width;
+        const y = (e.clientY - bounds.top) / bounds.height;
+        const rx = (y - 0.5) * 6; // rotateX
+        const ry = (x - 0.5) * -8; // rotateY
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`;
+      });
+      card.addEventListener('mouseleave',()=>{card.style.transform='none'});
+    });
+
+    // Modal controls
+    const modal = document.getElementById('certModal');
+    function openModal(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); }
+    function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+    window.openModal = openModal; window.closeModal = closeModal;
+
+    // helper
+    function openInNewTab(url){ window.open(url,'_blank'); }
+
+    // small entrance animation for profile image
+    const profile = document.getElementById('profileImg');
+    if(profile){ profile.style.transform = 'translateY(-6px)'; setTimeout(()=>profile.style.transform='none',900); }
+
+    // Make sure SVG progress circles have initial dash array set
+    document.querySelectorAll('.skill .progress').forEach(c=>{ c.style.strokeDasharray = '251.2'; c.style.strokeDashoffset = '251.2'; });
+
+  </script>
+</body>
+</html>
