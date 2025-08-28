@@ -83,12 +83,6 @@
     .project img{width:100%;height:160px;object-fit:cover}
     .project-body{padding:12px}
     .tag{display:inline-block;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.03);margin-right:6px;color:var(--muted);font-size:13px}
-    .project img {
-  width:100%;
-  height:160px;
-  object-fit:cover;  /* crops nicely to fit */
-}
-
 
     /* timeline */
     .timeline{position:relative;padding-left:18px;margin-top:10px}
@@ -239,69 +233,70 @@
       </section>
 
       <!-- PROJECTS -->
-      <!-- Projects Section -->
-<div class="projects-grid">
+      <section id="projects" class="card reveal">
+        <h3>Projects</h3>
+        <div class="projects-grid">
 
-  <!-- Project 1 -->
-  <article class="project" data-tilt>
-    <img src="project1.png" alt="Smart Aquaponics System" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450?text=Smart+Aquaponics'">
-    <div class="project-body">
-      <h4>Smart Aquaponics</h4>
-      <p style="color:var(--muted);margin:6px 0">IoT powered aquaponics farming system with automated monitoring.</p>
-      <div style="margin-top:8px">
-        <span class="tag">IoT</span>
-        <span class="tag">Raspberry Pi</span>
-        <span class="tag">Automation</span>
-      </div>
-      <div style="margin-top:10px;display:flex;gap:8px">
-        <a class="btn ghost" href="https://github.com/khaif2/smart-aquaponics" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
-        <a class="btn" href="#" target="_blank">View</a>
-      </div>
-    </div>
-  </article>
+          <article class="project" data-tilt>
+            <img src="aquaponicspic.png" alt="Smart Aquaponics" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450?text=Aquaponics'">
+            <div class="project-body">
+              <h4>Smart Aquaponics System</h4>
+              <p style="color:var(--muted);margin:6px 0">IoT + CNN-based image classification for fish/plant disease detection. Achieved ~92% accuracy and built real-time monitoring dashboards.</p>
+              <div style="margin-top:8px"><span class="tag">Python</span><span class="tag">CNN</span><span class="tag">Computer Vision</span></div>
+              <div style="margin-top:10px;display:flex;gap:8px">
+                <a class="btn ghost" href="https://github.com/khaif2/AQUAPONICS" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                <a class="btn" href="#" onclick="openInNewTab('https://github.com/khaif2/AQUAPONICS')">View</a>
+              </div>
+            </div>
+          </article>
 
-  <!-- Project 2 -->
-  <article class="project" data-tilt>
-    <img src="project2.png" alt="E-Commerce Cart" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450?text=E-Commerce+Cart'">
-    <div class="project-body">
-      <h4>E-Commerce Cart</h4>
-      <p style="color:var(--muted);margin:6px 0">Shopping cart system with dynamic updates and checkout process.</p>
-      <div style="margin-top:8px">
-        <span class="tag">React</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">MongoDB</span>
-      </div>
-      <div style="margin-top:10px;display:flex;gap:8px">
-        <a class="btn ghost" href="https://github.com/khaif2/ecommerce-cart" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
-        <a class="btn" href="#" target="_blank">View</a>
-      </div>
-    </div>
-  </article>
+          <article class="project" data-tilt>
+            <img src="ecartlogo.jpg" alt="E-Commerce Cart" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450?text=E-Commerce'">
+            <div class="project-body">
+              <h4>E-Commerce Cart System</h4>
+              <p style="color:var(--muted);margin:6px 0">Command-line shopping cart built with core Python data structures and functions; supports product management and billing simulation.</p>
+              <div style="margin-top:8px"><span class="tag">Python</span><span class="tag">DSA</span><span class="tag">CLI</span></div>
+              <div style="margin-top:10px;display:flex;gap:8px">
+                <a class="btn ghost" href="https://github.com/khaif2/E-Commerce-Cart-" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                <a class="btn" href="#" onclick="openInNewTab('https://github.com/khaif2/E-Commerce-Cart-')">View</a>
+              </div>
+            </div>
+          </article>
 
-  <!-- Project 3 (NEW Netflix & Snacks Dashboard) -->
-  <article class="project" data-tilt>
-    <img src="page-2.png" alt="Netflix & Snacks Dashboard" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450?text=Netflix+%26+Snacks'">
-    <div class="project-body">
-      <h4>Netflix & Snacks Dashboard</h4>
-      <p style="color:var(--muted);margin:6px 0">
-        A funny 2-page Power BI dashboard that tracks binge-watching habits and snack risk levels 🍿📺.
-      </p>
-      <div style="margin-top:8px">
-        <span class="tag">Power BI</span>
-        <span class="tag">Data Viz</span>
-        <span class="tag">Fun Project</span>
-      </div>
-      <div style="margin-top:10px;display:flex;gap:8px">
-        <a class="btn ghost" href="https://github.com/khaif2/netflix-snacks-dashboard" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
-        <a class="btn" href="https://github.com/khaif2/netflix-snacks-dashboard" target="_blank">View</a>
-      </div>
-    </div>
-  </article>
+          <article class="project" data-tilt>
+            <img src="placementdatapic.jpeg" alt="Placement Analysis" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450?text=Placement+Analysis'">
+            <div class="project-body">
+              <h4>Placement Data Analysis</h4>
+              <p style="color:var(--muted);margin:6px 0">Analyzed 200+ student records to uncover placement trends using Pandas and Matplotlib. Visualized placement rates and gender-based outcomes.</p>
+              <div style="margin-top:8px"><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">EDA</span></div>
+              <div style="margin-top:10px;display:flex;gap:8px">
+                <a class="btn ghost" href="https://github.com/khaif2/placement-data-analysis" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                <a class="btn" href="#" onclick="openInNewTab('https://github.com/khaif2/placement-data-analysis')">View</a>
+              </div>
+            </div>
+          </article>
+          <article class="project" data-tilt>
+            <img src="rentalsystem.jpg" alt="Vehicle Rental System" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450?text=Vehicle+Rental+System'">
+            <div class="project-body">
+             <h4>Vehicle Rental System</h4>
+             <p style="color:var(--muted);margin:6px 0">
+                 Developed a Python console app for managing vehicle rentals including user registration, booking, returns, and admin controls. Demonstrates OOP, inheritance, and collections.
+             </p>
+             <div style="margin-top:8px">
+              <span class="tag">Python</span>
+              <span class="tag">OOP</span>
+              <span class="tag">Console App</span>
+             </div>
+             <div style="margin-top:10px;display:flex;gap:8px">
+          <a class="btn ghost" href="https://github.com/khaif2/vehicle-rental-system" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+          <a class="btn" href="#" onclick="openInNewTab('https://github.com/khaif2/vehicle-rental-system')">View</a>
+         </div>
+       </div>
+    </article>
 
-</div>
 
-</div>
-
+        </div>
+      </section>
 
       <!-- EXPERIENCE -->
       <section id="experience" class="card reveal">
@@ -532,11 +527,6 @@
   </script>
 </body>
 </html>
-
-
-
-
-
 
 
 
